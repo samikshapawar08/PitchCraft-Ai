@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes pulse-border {
+  0%, 100% { border-color: hsl(var(--cyber-teal) / 0.2); }
+  50% { border-color: hsl(var(--cyber-teal) / 0.5); }
+}
+
+@keyframes animate-stars {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 173 97% 41%; /* cyber-teal */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 173 50% 30%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 173 97% 41%;
+
+    --radius: 0.5rem;
+
+    --cyber-teal: 173 97% 41%;
+    --electric-purple: 265 89% 60%;
+    --hot-magenta: 329 100% 59%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 173 97% 41%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 173 50% 30%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 173 97% 41%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-orbitron;
+    background-color: #0A0A1A;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-400/5 backdrop-blur-lg border rounded-2xl shadow-2xl shadow-black/20;
+    animation: pulse-border 5s ease-in-out infinite;
+    background-image:
+      linear-gradient(hsl(var(--cyber-teal)/0.05) 1px, transparent 1px),
+      linear-gradient(to right, hsl(var(--cyber-teal)/0.05) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+  }
+  .neon-button {
+    @apply bg-primary/20 border border-primary text-primary-foreground font-bold rounded-lg transition-all duration-300;
+  }
+  .neon-button:hover {
+    @apply bg-primary text-background shadow-[0_0_15px_hsl(var(--primary)),0_0_30px_hsl(var(--primary))];
+  }
+  .futuristic-input {
+    @apply w-full bg-slate-500/10 border border-cyber-teal/30 rounded-lg p-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300;
+  }
+
+  .futuristic-input-container {
+    @apply relative;
+  }
+
+  .futuristic-input-icon {
+    @apply absolute left-3.5 top-1/2 -translate-y-1/2 text-cyber-teal/50 pointer-events-none;
+  }
+  
+  .futuristic-textarea-icon {
+    @apply absolute left-3.5 top-3.5 text-cyber-teal/50 pointer-events-none;
+  }
+
+  .futuristic-input {
+    padding-left: 2.75rem;
+  }
+
+  .starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4000px;
+    background-repeat: repeat;
+    background-position: center;
+    animation: animate-stars linear infinite;
+  }
+
+  .stars-sm {
+    background-image: radial-gradient(1px 1px at 25px 25px, white, transparent),
+                      radial-gradient(1px 1px at 75px 75px, white, transparent),
+                      radial-gradient(1px 1px at 125px 150px, white, transparent),
+                      radial-gradient(1px 1px at 200px 50px, white, transparent);
+    background-size: 250px 250px;
+    animation-duration: 150s;
+  }
+
+  .stars-md {
+    background-image: radial-gradient(2px 2px at 50px 100px, white, transparent),
+                      radial-gradient(2px 2px at 150px 200px, white, transparent);
+    background-size: 350px 350px;
+    animation-duration: 100s;
+  }
+
+  .stars-lg {
+    background-image: radial-gradient(3px 3px at 100px 250px, white, transparent);
+    background-size: 450px 450px;
+    animation-duration: 50s;
+  }
+}
